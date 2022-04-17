@@ -2,4 +2,9 @@ bin
 include
 lib
 lib64
+share
+cache
 pyvenv.cfg
+
+**.csv
+**.html

@@ -8,3 +8,7 @@ pyvenv.cfg
 
 **.csv
 **.html
+**.dbf
+**.prj
+**.shp
+**.shx

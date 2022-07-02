@@ -4,6 +4,7 @@ lib
 lib64
 share
 cache
+data
 pyvenv.cfg
 
 **.csv
@@ -12,3 +13,5 @@ pyvenv.cfg
 **.prj
 **.shp
 **.shx
+**.txt
+**__pycache__

@@ -1,0 +1,5 @@
+errors:
+  not_supported: "Format not supported"
+
+test:
+  hi: "Hello World!"

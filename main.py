@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import geopandas as geopd
 import osmnx as ox
 import matplotlib.pyplot as plt
 import folium
@@ -10,11 +9,11 @@ from src.osm import OSM
 import matplotlib
 matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
+from src.strava import Strava
+# print(ox.__version__)
+# print(nx.__version__)
 
-print(ox.__version__)
-print(nx.__version__)
-
-stravaData = geopd.read_file('data/a194d8ef5e9c573f43e8b74b21aea76dff15c3409636491028c2f4099e62fb79-1629079624795.shp')
+stravaData = Strava.get_shp_data()
 stravaData.to_csv('strava.csv')
 # Se descarga el mapa de Valparaíso
 osmGraph = OSM.get_graph('Valparaíso, Valparaíso, Chile')
@@ -29,11 +28,15 @@ osmStreets.to_csv('streets.csv')
 stravaStreets = pd.merge(stravaData,osmStreets,left_on = 'osmId',right_on = 'osmid', how = 'inner')
 stravaStreets.to_csv("strava_edges.csv",index=False)
 
-fig,ax = plt.subplots()
-stravaG = stravaStreets['geometry_x'].plot(ax = ax, label = 'VALPARAISO', color = 'grey')
-osmG = osmStreets['geometry'].plot(ax = ax, label = 'PEDALEABLE', color = 'blue')
-plt.show()
+# fig,ax = plt.subplots()
+# stravaG = stravaStreets['geometry_x'].plot(ax = ax, label = 'VALPARAISO', color = 'grey')
+# osmG = osmStreets['geometry'].plot(ax = ax, label = 'PEDALEABLE', color = 'blue')
+# plt.show()
 
+#stravaStreets = stravaStreets.set_geometry("geometry_y")
+myMap = stravaData.explore()
+outfp = r"testStravaMap.html"
+myMap.save(outfp)
 #edges = nx.Graph.add_edge(stravaStreets['u'], stravaStreets['v'])
 # toGraf = ox.graph_from_gdfs(osmNodes,stravaStreets)
 

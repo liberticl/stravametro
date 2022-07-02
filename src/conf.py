@@ -13,20 +13,26 @@ class Env:
             env = yaml.load(file,Loader = yaml.FullLoader)
         return env['lang']
 
-class Lang:
-    def __init__(self):
-        self.lang = Env.lang()
+class Path:
+    def get_names(key:str):
+        with open(Env.get()) as file:
+            env = yaml.load(file,Loader = yaml.FullLoader)
+        return env['path_names'][key]
+    
+    def get(key:str):
         try: 
             for obj in os.scandir(ROOTDIR):
-                if obj.is_dir() and 'lang' in obj.name:
-                    self.dir = os.path.dirname(os.path.realpath(obj.path + os.sep + obj.name))
+                if obj.is_dir() and Path.get_names(key) in obj.name:
+                    return os.path.dirname(os.path.realpath(obj.path + os.sep + obj.name))
         except:
-            raise Exception("lang directory does not exist!")
+            raise Exception(f"{key} directory does not exist in {ROOTDIR}!")
 
+
+class Lang:
     def use():
-        this = Lang()
-        file = "/" + this.lang + ".yaml"
-        with open(this.dir + file) as language:
+        lang = Env.lang()
+        file = "/" + lang + ".yaml"
+        with open(Path.get('lang') + file) as language:
             return yaml.load(language,Loader = yaml.FullLoader)
 
     def errors():
@@ -34,4 +40,5 @@ class Lang:
         return messages['errors']
 
 ROOTDIR = 'src'
+DATA_PATH = Path.get('data')
 ERR_MSG = Lang.errors()

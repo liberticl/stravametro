@@ -1,5 +1,16 @@
 errors:
   not_supported: "Formato no soportado"
+  missing_column: "Falta la columna"
+  non-existent place: "El lugar parece no existir en OpenStreetMaps. Intenta buscarlo en https://www.openstreetmap.org/"
+
+df_columns:
+  urgency: "Urgencia"
+
+urgency:
+  minUrgency: "Mínima"
+  mediumUrgency: "Media"
+  highUrgency: "Alta"
+  maxUrgency: "Máxima"
 
 test:
   hi: "Hola Mundo!"

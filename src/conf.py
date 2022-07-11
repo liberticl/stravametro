@@ -39,6 +39,17 @@ class Lang:
         messages = Lang.use()
         return messages['errors']
 
+    def df_columns():
+        col = Lang.use()
+        return col['df_columns']
+
+    def urgency():
+        col = Lang.use()
+        return col['urgency']
+
 ROOTDIR = 'src'
 DATA_PATH = Path.get('data')
+
 ERR_MSG = Lang.errors()
+COLNAME = Lang.df_columns()
+URGENCY = Lang.urgency()

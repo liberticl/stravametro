@@ -13,6 +13,11 @@ class Env:
             env = yaml.load(file,Loader = yaml.FullLoader)
         return env['lang']
 
+    def mapcolors():
+        with open(Env.get()) as file:
+            env = yaml.load(file,Loader = yaml.FullLoader)
+        return env['colors']
+
 class Path:
     def get_names(key:str):
         with open(Env.get()) as file:
@@ -53,3 +58,5 @@ DATA_PATH = Path.get('data')
 ERR_MSG = Lang.errors()
 COLNAME = Lang.df_columns()
 URGENCY = Lang.urgency()
+
+COLORS = Env.mapcolors()

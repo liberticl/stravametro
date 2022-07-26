@@ -2,6 +2,7 @@ errors:
   not_supported: "Formato no soportado"
   missing_column: "Falta la columna"
   non-existent place: "El lugar parece no existir en OpenStreetMaps. Intenta buscarlo en https://www.openstreetmap.org/"
+  key_not_found: "Llave no encontrada. Favor revisar env.yaml o su archivo de idioma"
 
 df_columns:
   urgency: "Urgencia"
@@ -11,6 +12,7 @@ urgency:
   mediumUrgency: "Media"
   highUrgency: "Alta"
   maxUrgency: "Máxima"
+  unclassified: "Sin Clasificación"
 
 test:
   hi: "Hola Mundo!"

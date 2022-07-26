@@ -2,6 +2,7 @@ errors:
   not_supported: "Format not supported"
   missing_column: "Missing column"
   non-existent place: "Non-existent place in OpenStreetMaps. Try finding your place in https://www.openstreetmap.org/"
+  key_not_found: "Key not found. Please see env.yaml file or your lang file"
 
 df_columns:
   urgency: "Urgency"
@@ -11,6 +12,7 @@ urgency:
   mediumUrgency: "Medium"
   highUrgency: "High"
   maxUrgency: "Maximum"
+  unclassified: "Unclassified"
 
 test:
   hi: "Hello World!"

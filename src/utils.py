@@ -23,23 +23,28 @@ class Utils:
             if obj.is_file() and ext in obj.name:
                 return os.path.dirname(os.path.realpath(obj.path + os.sep + obj.name))
 
-    def percentage(x,xmax):
-        return round((x/xmax * 100),2)
-
     def classify(x,min,max):
         minUrgency = min * 100
         consider = max - minUrgency
         mediumUrgency = consider * 0.5 + minUrgency
-        highUrgency = consider * 0.9 + minUrgency
+        highUrgency = consider * 0.8 + minUrgency
         
         if(x < minUrgency):
             return URGENCY['minUrgency']
-        elif(minUrgency <= x < mediumUrgency):
+        elif(x < mediumUrgency):
             return URGENCY['mediumUrgency']
-        elif(mediumUrgency <= x < highUrgency):
+        elif(x < highUrgency):
             return URGENCY['highUrgency']
-        else:
+        elif(x >= highUrgency):
             return URGENCY['maxUrgency']
+        else:
+            return URGENCY['unclassified']
+
+    def get_key_by_value(aDict:dict,value:str):
+        for key,val in aDict.items():
+            if(val == value):
+                return key
+        return False
 
 class Shapes:
     def city_polygon(gdf):

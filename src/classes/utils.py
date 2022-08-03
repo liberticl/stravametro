@@ -1,4 +1,4 @@
-from .conf import DATA_PATH,URGENCY
+from .conf import URGENCY
 import os
 import numpy as np
 import geopandas as geopd
@@ -18,8 +18,8 @@ class Utils:
         else:
             return element
 
-    def get_file_by_extension(ext:str):
-        for obj in os.scandir(DATA_PATH):
+    def get_file_by_extension(ext:str,path:str):
+        for obj in os.scandir(path):
             if obj.is_file() and ext in obj.name:
                 return os.path.dirname(os.path.realpath(obj.path + os.sep + obj.name))
 

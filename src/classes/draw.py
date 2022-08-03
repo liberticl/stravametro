@@ -1,9 +1,12 @@
 import folium
-from src.conf import COLNAME, COLORS, ERR_MSG, URGENCY
-from src.utils import Utils
+from src.classes.conf import COLNAME, COLORS, ERR_MSG, URGENCY
+from src.classes.utils import Utils
 
 class Export:
-    def to_html(toPlot,polygon):
+    def to_html(toPlot,polygon,year):
+        if(year == 'None'):
+            year = 'All'
+
         urgencyValues = toPlot[COLNAME['urgency']].unique().tolist()
         flag = True
         for urgency in urgencyValues:
@@ -28,5 +31,5 @@ class Export:
                 )
             
         folium.LayerControl(collapsed = False).add_to(map)  # use folium to add layer control
-        outfp = r"tripMap.html"
+        outfp = f"vinadelmar_{year}.html"
         map.save(outfp)

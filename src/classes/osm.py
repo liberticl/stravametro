@@ -1,4 +1,3 @@
-from audioop import mul
 from . import utils
 from .conf import ERR_MSG
 import pandas as pd
@@ -55,7 +54,7 @@ class Convert:
 
     def place_to_df(place: str, mode = 'bike', save = False, save_as = 'csv'):
         #place = 'Valparaíso, Valparaíso, Chile'
-        osmGraph = OSM.get_graph(place,network_type = mode)
+        osmGraph = Maps.get_graph(place,network_type = mode)
         osmStreets = ox.utils_graph.graph_to_gdfs(osmGraph,nodes = False)
         if(save):
             if(save_as.split('.')[-1] == 'csv'):

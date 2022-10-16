@@ -5,6 +5,7 @@ lib64
 share
 cache
 data
+webSite
 pyvenv.cfg
 
 **.csv
@@ -17,3 +18,4 @@ pyvenv.cfg
 **__pycache__
 **.svg
 **.png
+**.zip

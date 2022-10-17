@@ -14,10 +14,10 @@ import folium
 import matplotlib.pyplot as plt
 
 # Get GeoData
-cityPolygon = Maps.get_place_polygon('Viña del Mar, Valparaíso, Chile')
+cityPolygon = Maps.get_place_polygon('Región de Valparaíso, Chile')
 polygon = cityPolygon['geometry'][0]
 
-def flow(all:bool,year = None):
+def flow(all:bool,year = None, month = None, day = None, hourRange = None):
     # Get by year
     if(all):
         dirs = [dir[0] for dir in os.walk(DATA_PATH)]
@@ -35,7 +35,7 @@ def flow(all:bool,year = None):
     tripsData = pd.DataFrame()
     for dir in dirs:
         if(len(os.listdir(dir)) > 0):
-            tripsData = pd.concat([Strava.get_csv_data(dir),tripsData])
+            tripsData = pd.concat([Strava.get_csv_data(dir, day, hourRange),tripsData])
     tripsData = tripsData[['edge_uid','forward_trip_count','reverse_trip_count']]
 
     # Calculate totals

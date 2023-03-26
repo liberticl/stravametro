@@ -9,7 +9,7 @@ class Strava:
         shpFile = Utils.get_file_by_extension('shp',pathName)
         return geopd.read_file(shpFile)
 
-    def get_csv_data(pathName:str, day, hourRange):
+    def get_csv_data(pathName:str, day = None, hourRange = None):
         csvFile = Utils.get_file_by_extension('csv',pathName)
         data = pd.read_csv(csvFile,low_memory = False)
         if(day or hourRange):

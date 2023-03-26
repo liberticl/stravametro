@@ -14,7 +14,7 @@ import folium
 import matplotlib.pyplot as plt
 
 # Get GeoData
-cityPolygon = Maps.get_place_polygon('Región de Valparaíso, Chile')
+cityPolygon = Maps.get_place_polygon('Valparaíso, Valparaíso, Chile')
 polygon = cityPolygon['geometry'][0]
 
 def flow(all:bool,year = None, month = None, day = None, hourRange = None):
@@ -84,17 +84,19 @@ def cuantitative():
     tripsData['total_trip_count'] = tripsData['forward_trip_count'] + tripsData['reverse_trip_count']
     tripsData['media'] = tripsData['total_trip_count']/edges
     sumByYear = tripsData.groupby('year',sort = True).sum()
+
+    print(sumByYear)
     
     # Plot travels
     plt.grid()
     plt.plot(sumByYear.index, sumByYear["media"])
     plt.xticks(sumByYear.index,list(sumByYear.index))
-    plt.title('Promedio de viajes por calle en Viña del Mar')
+    plt.title('Promedio de viajes por calle en Valparaíso')
     plt.show()
 
     # Plot travels
     plt.grid()
     plt.plot(sumByYear.index, sumByYear["total_trip_count"])
     plt.xticks(sumByYear.index,list(sumByYear.index))
-    plt.title('Total de viajes contabilizados en todas las calles de Viña del Mar')
+    plt.title('Total de viajes contabilizados en todas las calles de Valparaíso')
     plt.show()

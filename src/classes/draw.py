@@ -31,5 +31,5 @@ class Export:
                 )
             
         folium.LayerControl(collapsed = False).add_to(map)  # use folium to add layer control
-        outfp = f"vinadelmar_{year}.html"
+        outfp = f"quilpue_{year}.html"
         map.save(outfp)
